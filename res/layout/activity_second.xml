@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FirstView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="@string/ic_launcher"
+    android:orientation="vertical"
+    tools:context="io.flakstad.eggejakten.SecondActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.67"
+        android:contentDescription="@string/ic_launcher"
+        android:src="@drawable/ic_launcher" />
+    
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/textfield"
+        android:inputType="text"
+        android:text="@string/textfield" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="nextActivity"
+        android:text="@string/button" />
+
+</LinearLayout>
