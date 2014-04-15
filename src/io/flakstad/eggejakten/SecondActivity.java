@@ -1,7 +1,9 @@
 package io.flakstad.eggejakten;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,8 +27,9 @@ public class SecondActivity extends Activity {
 
 				if (pass.equals(getString(R.string.secondPassword))
 						|| pass.equals(getString(R.string.hackPassword))) {
-					// startActivity(new Intent(SecondActivity.this,
-					// ThirdActivity.class));
+					Log.d(TAG, "Starting final activity."); 
+					startActivity(new Intent(SecondActivity.this,
+					 FinalActivity.class));
 				} else
 					Toast.makeText(SecondActivity.this, "Feil kodeord.",
 							Toast.LENGTH_LONG).show();

@@ -3,6 +3,7 @@ package io.flakstad.eggejakten;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class FirstActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_first);
 
 		final Button button = (Button) findViewById(R.id.button);
@@ -26,6 +28,7 @@ public class FirstActivity extends Activity {
 
 				if (pass.equals(getString(R.string.firstPassword))
 						|| pass.equals(getString(R.string.hackPassword))) {
+					Log.d(TAG, "Starting second activity.");
 					startActivity(new Intent(FirstActivity.this,
 							SecondActivity.class));
 				} else
