@@ -4,54 +4,58 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class ColorView extends SurfaceView implements SurfaceHolder.Callback {
+public class DistanceView extends SurfaceView implements SurfaceHolder.Callback {
 
-	private ColorThread thread;
+	final String TAG = "DistanceView";
 
-	public ColorView(Context context, AttributeSet attrs) {
+	private DistanceThread thread;
+
+	public DistanceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		SurfaceHolder holder = getHolder();
 		holder.addCallback(this);
-		thread = new ColorThread(holder, context, new Handler() {
+		thread = new DistanceThread(holder, context, new Handler() {
 		});
 	}
 
-	class ColorThread extends Thread {
-		public String TAG = "ColorThread";
+	class DistanceThread extends Thread {
+		final String TAG = "DistanceThread";
+
 		SurfaceHolder mSurfaceHolder;
 		Handler mHandler;
 		Context mContext;
 		boolean mRun;
-		Paint paint;
+		Paint textPaint, distancePaint;
 		private int alpha, red, green, blue;
 		private int distance;
-		private int temp;
+		String messageText = "..PŒskeegget lokaliseres..";
 
-		public ColorThread(SurfaceHolder surfaceHolder, Context context,
+		public DistanceThread(SurfaceHolder surfaceHolder, Context context,
 				Handler handler) {
-			Log.d(TAG, "created color thread");
 			mHandler = handler;
 			mContext = context;
 			mSurfaceHolder = surfaceHolder;
-			paint = new Paint();
-			paint.setARGB(255, 255, 255, 255);
-			paint.setTextSize(150);
-			setAlpha(255);
-			setRed(0);
-			setGreen(0);
-			setBlue(0);
+			distancePaint = new Paint();
+			distancePaint.setARGB(255, 255, 255, 255);
+			distancePaint.setTextSize(150);
+			distancePaint.setTextAlign(Align.CENTER);
+			textPaint = new Paint();
+			textPaint.setTextAlign(Align.CENTER);
+			textPaint.setTextSize(100);
+			textPaint.setARGB(255, 255, 255, 255);
+			setDistance(-1);
 		}
 
 		@Override
 		public void run() {
 			while (mRun) {
-				Log.d(TAG, "	looping in ColorThread..");
 				Canvas c = null;
 				try {
 					c = mSurfaceHolder.lockCanvas(null);
@@ -61,7 +65,6 @@ public class ColorView extends SurfaceView implements SurfaceHolder.Callback {
 					}
 				} finally {
 					if (c != null) {
-						Log.d(TAG, "Unlocking and posting canvas.");
 						mSurfaceHolder.unlockCanvasAndPost(c);
 					}
 				}
@@ -69,11 +72,16 @@ public class ColorView extends SurfaceView implements SurfaceHolder.Callback {
 		}
 
 		private void doDraw(Canvas canvas) {
-			Log.d(TAG, "DRAWING");
-			// canvas.drawARGB(getAlpha(), getRed(), getGreen(), getBlue());
-			canvas.drawColor(Color.BLACK);
-			canvas.drawText(Integer.toString(getDistance()),
-					canvas.getWidth() / 2, canvas.getHeight() / 2, paint);
+			if (getDistance() == -1) {
+				canvas.drawColor(Color.BLACK);
+				canvas.drawText(messageText, (canvas.getWidth() / 2),
+						canvas.getHeight() / 2, textPaint);
+			} else {
+				canvas.drawColor(Color.BLACK);
+				canvas.drawText(Integer.toString(getDistance()),
+						(canvas.getWidth() / 2), canvas.getHeight() / 2,
+						distancePaint);
+			}
 		}
 
 		public void setRunning(boolean b) {
@@ -122,7 +130,7 @@ public class ColorView extends SurfaceView implements SurfaceHolder.Callback {
 
 	}
 
-	public ColorThread getThread() {
+	public DistanceThread getThread() {
 		return thread;
 	}
 

@@ -1,6 +1,6 @@
 package io.flakstad.eggejakten;
 
-import io.flakstad.eggejakten.ColorView.ColorThread;
+import io.flakstad.eggejakten.DistanceView.DistanceThread;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
@@ -12,34 +12,30 @@ public class FinalActivity extends Activity {
 
 	static final String TAG = "FinalActivity";
 
-	private ColorView mColorView;
-	private ColorThread mColorThread;
+	private DistanceView mDistanceView;
+	private DistanceThread mDistanceThread;
 	LocationManager locationManager;
 	String locationProvider;
 	Location lastKnownLocation, targetLocation;
 	LocationListener locationListener;
 
-	double meter = 1.0;
-	int alpha = 255;
-	int red = 255;
-	int green = 255;
-	int blue = 204;
+	final double targetLatitude = 60.163186;
+	final double targetLongitude = 10.315984;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_final);
-		mColorView = (ColorView) findViewById(R.id.color);
-		mColorThread = mColorView.getThread();
-
+		mDistanceView = (DistanceView) findViewById(R.id.color);
+		mDistanceThread = mDistanceView.getThread();
 		setupLocationHandler();
 	}
 
 	private void setupLocationHandler() {
 		locationProvider = LocationManager.GPS_PROVIDER;
 		targetLocation = new Location(locationProvider);
-		targetLocation.setLatitude(60.163186);
-		targetLocation.setLongitude(10.315984);
+		targetLocation.setLatitude(targetLatitude);
+		targetLocation.setLongitude(targetLongitude);
 		// Acquire a reference to the system Location Manager
 		locationManager = (LocationManager) this
 				.getSystemService(Context.LOCATION_SERVICE);
@@ -72,29 +68,18 @@ public class FinalActivity extends Activity {
 	private void updatePosition(Location location) {
 		// Find distance to target.
 		double distance = location.distanceTo(targetLocation);
-//		setColor(distance);
-		mColorThread.setDistance((int) distance);
+		// setColor(distance);
+		mDistanceThread.setDistance((int) distance);
 	}
 
-	private void setColor(double distance) {
-		if (distance < 20) {
-			// oransje->r¿dt
-			red = 255;
-			green = (int) (140.0 * (distance / 20));
-			blue = 0;
-		} else {
-			// gultoner
-			red = 255;
-			green = 255;
-			if (distance >= 255)
-				blue = 204;
-			else
-				blue = (int) (distance - 41);
-		}
-		mColorThread.setAlpha(alpha);
-		mColorThread.setRed(red);
-		mColorThread.setGreen(green);
-		mColorThread.setBlue(blue);
+	@Override
+	protected void onPause() {
+		super.onPause();
+		locationManager.removeUpdates(locationListener);
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 }

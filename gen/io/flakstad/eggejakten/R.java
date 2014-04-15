@@ -26,12 +26,12 @@ public final class R {
     }
     public static final class id {
         public static final int FirstView=0x7f080001;
-        public static final int SecondView=0x7f080005;
+        public static final int SecondView=0x7f080004;
         public static final int action_settings=0x7f080006;
-        public static final int button=0x7f080004;
+        public static final int button=0x7f080003;
         public static final int color=0x7f080000;
         public static final int imageView1=0x7f080002;
-        public static final int text=0x7f080003;
+        public static final int text=0x7f080005;
     }
     public static final class layout {
         public static final int activity_final=0x7f030000;
@@ -49,6 +49,8 @@ public final class R {
         public static final int hackPassword=0x7f050007;
         public static final int ic_launcher=0x7f050008;
         public static final int secondPassword=0x7f050005;
+        public static final int start_button=0x7f050009;
+        public static final int target_latitude=0x7f05000a;
         public static final int textfield=0x7f050003;
         public static final int thirdPassword=0x7f050006;
     }
