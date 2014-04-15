@@ -31,6 +31,7 @@ public class ColorView extends SurfaceView implements SurfaceHolder.Callback {
 		Paint paint;
 		private int alpha, red, green, blue;
 		private int distance;
+		private int temp;
 
 		public ColorThread(SurfaceHolder surfaceHolder, Context context,
 				Handler handler) {
