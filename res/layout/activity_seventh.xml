@@ -7,13 +7,14 @@
     android:orientation="vertical"
     tools:context="io.flakstad.eggejakten.SecondActivity" >
 
-    <ImageView
-        android:id="@+id/imageView1"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.67"
-        android:contentDescription="@string/ic_launcher"
-        android:src="@drawable/ic_launcher" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center_horizontal|top"
+        android:text="@string/seventh_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <EditText
         android:id="@+id/text"

@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -14,7 +15,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-       
         <activity
             android:name=".FirstActivity"
             android:label="@string/app_name" >
@@ -24,13 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity android:name=".SecondActivity" >
         </activity>
-        
+        <activity android:name=".ThirdActivity" >
+        </activity>
+        <activity android:name=".FourthActivity" >
+        </activity>
+        <activity android:name=".FifthActivity" >
+        </activity>
+        <activity android:name=".SixthActivity" >
+        </activity>
+        <activity android:name=".SeventhActivity" >
+        </activity>
         <activity android:name=".FinalActivity" >
         </activity>
-        
+        <activity android:name=".SensorActivity" >
+        </activity>
     </application>
 
 </manifest>

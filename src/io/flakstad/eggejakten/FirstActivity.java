@@ -21,7 +21,6 @@ public class FirstActivity extends Activity {
 		final Button button = (Button) findViewById(R.id.button);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.d(TAG, "Starting second activity.");
 				startActivity(new Intent(FirstActivity.this,
 						SecondActivity.class));
 			}

@@ -18,9 +18,8 @@ public class FinalActivity extends Activity {
 	String locationProvider;
 	Location lastKnownLocation, targetLocation;
 	LocationListener locationListener;
-
-	final double targetLatitude = 60.163186;
-	final double targetLongitude = 10.315984;
+	final double targetLatitude = 60.163262;
+	final double targetLongitude = 10.315156;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

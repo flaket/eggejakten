@@ -35,7 +35,7 @@ public class DistanceView extends SurfaceView implements SurfaceHolder.Callback 
 		Paint textPaint, distancePaint;
 		private int alpha, red, green, blue;
 		private int distance;
-		String messageText = "..PŒskeegget lokaliseres..";
+		String messageText = "..PŒskeeggene lokaliseres..";
 
 		public DistanceThread(SurfaceHolder surfaceHolder, Context context,
 				Handler handler) {
@@ -48,7 +48,7 @@ public class DistanceView extends SurfaceView implements SurfaceHolder.Callback 
 			distancePaint.setTextAlign(Align.CENTER);
 			textPaint = new Paint();
 			textPaint.setTextAlign(Align.CENTER);
-			textPaint.setTextSize(100);
+			textPaint.setTextSize(30);
 			textPaint.setARGB(255, 255, 255, 255);
 			setDistance(-1);
 		}
