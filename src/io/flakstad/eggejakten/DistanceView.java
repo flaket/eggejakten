@@ -127,7 +127,6 @@ public class DistanceView extends SurfaceView implements SurfaceHolder.Callback 
 		public void setDistance(int distance) {
 			this.distance = distance;
 		}
-
 	}
 
 	public DistanceThread getThread() {

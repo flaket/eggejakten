@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.67"
         android:contentDescription="@string/ic_launcher"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ball" />
     
     <EditText
         android:id="@+id/text"
